@@ -1,0 +1,39 @@
+mybatis-plus:
+  global-config:
+    db-config:
+      column-format:
+  #mapper映射的XML文件位置
+  mapper-locations: classpath:mappers/*Mapper.xml
+  #别名包扫描路径
+  type-aliases-package: com.ldy.entity.bean
+  configuration:
+    #下划线转驼峰
+    map-underscore-to-camel-case: true
+
+server:
+  port: 8000
+
+spring:
+  #数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/nack?characterEncoding=utf8&useSSL=false&zerotimestampBehavior=convertToNull
+    username: root
+    password: 19951221ldy
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      idle-timeout: 600000
+      connection-timeout: 30000
+      max-lifetime: 1765000
+      auto-commit: true
+  #文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+#日志配置
+logging:
+  level:
+    com.ldy: debug
