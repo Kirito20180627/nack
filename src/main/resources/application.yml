@@ -5,7 +5,7 @@ mybatis-plus:
   #mapper映射的XML文件位置
   mapper-locations: classpath:mappers/*Mapper.xml
   #别名包扫描路径
-  type-aliases-package: com.ldy.entity.bean
+  type-aliases-package: com.ldy.entity.po
   configuration:
     #下划线转驼峰
     map-underscore-to-camel-case: true
