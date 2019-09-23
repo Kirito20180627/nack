@@ -2,6 +2,7 @@ package com.ldy.controller.strategyPattern;
 
 import com.ldy.common.pattern.strategyPattern.QueryBizService_Demo1;
 import com.ldy.common.pattern.strategyPattern.QueryBizService_Demo2;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,6 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/nack/pattern")
+@Api(tags = {"策略模式测试接口"})
 public class StrategyPatternController {
     @Autowired
     private QueryBizService_Demo1 queryBizService_demo1;

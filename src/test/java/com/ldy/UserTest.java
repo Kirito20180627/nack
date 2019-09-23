@@ -34,4 +34,9 @@ public class UserTest {
     public void tokenTest() {
         userController.all();
     }
+
+    @Test
+    public void SimpleJavaApp(){
+
+    }
 }
