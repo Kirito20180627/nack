@@ -8,7 +8,6 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 public class Swagger2Config {
@@ -18,7 +17,7 @@ public class Swagger2Config {
                 .apiInfo(new ApiInfoBuilder()
                         .title("标题：李丹阳测试代码_接口文档")
                         .description("用于本地跑测试")
-                        .contact(new Contact("li", null, null))
+                        .contact(new Contact("li", null, "22257982929@qq.com"))
                         .version("版本号1.0")
                         .build())
                 .select()
