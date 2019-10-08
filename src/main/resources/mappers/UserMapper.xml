@@ -3,5 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ldy.entity.dao.UserMapper">
+    <parameterMap id="User" type="com.ldy.entity.po.User" />
+    <resultMap id="User" type="com.ldy.entity.po.User">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="password" column="password" />
+        <result property="remark" column="remark" javaType="Object" typeHandler="com.ldy.common.config.type.ObjectJsonHandler"/>
+    </resultMap>
+    <insert id="insertWithJson" parameterMap="User" >
+        insert into user (id, name, password, remark)
+        values (#{id}, #{name}, #{password}, #{remark, javaType = Object, jdbcType = OTHER, typeHandler = com.ldy.common.config.type.ObjectJsonHandler})
+    </insert>
+
+    <select id="selectWithJson" resultMap="User">
+        select * from user
+    </select>
 
 </mapper>

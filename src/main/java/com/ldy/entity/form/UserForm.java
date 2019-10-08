@@ -1,5 +1,6 @@
 package com.ldy.entity.form;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -14,5 +15,7 @@ public class UserForm implements Serializable {
 
     @NotBlank
     private String password;
+
+    private JSONObject remark;
 
 }

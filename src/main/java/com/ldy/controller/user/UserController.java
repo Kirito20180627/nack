@@ -1,18 +1,22 @@
 package com.ldy.controller.user;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ldy.common.config.annotation.CheckToken;
+import com.ldy.entity.dao.UserMapper;
 import com.ldy.entity.form.UserForm;
+import com.ldy.entity.po.User;
 import com.ldy.entity.vo.JsonResult;
 import com.ldy.service.IUserService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/nack/user")
@@ -22,6 +26,34 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @GetMapping(value = "/list")
+    public List<User> selectWithJson() {
+        return userMapper.selectWithJson();
+    }
+
+    @PostMapping(value = "/insert")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "remark", value = "备注", dataType = "JsonObject", paramType = "body")
+    })
+    public JsonResult insertWithJson(@Valid User user) {
+//        User user = new User();
+//        user.setName("lily");
+//        user.setPassword("001");
+//        JSONObject jsonObject = new JSONObject();
+//        jsonObject.put("性别", "女");
+//        user.setRemark(jsonObject);
+        JsonResult json = JsonResult.success();
+        try {
+            userMapper.insertWithJson(user);
+        } catch (Exception e) {
+            json.setMsg("插入失败");
+        }
+        return json;
+    }
 
     @CheckToken
     @RequestMapping(value = "/add", method = RequestMethod.POST)
