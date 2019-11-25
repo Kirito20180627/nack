@@ -1,4 +1,4 @@
-package com.ldy.controller;
+package com.ldy.controller.hello;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

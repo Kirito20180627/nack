@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -34,6 +35,26 @@ public class UserController {
     public List<User> selectWithJson() {
         return userMapper.selectWithJson();
     }
+
+    @GetMapping("/search")
+    public JSONObject searchUserById(@RequestParam("id")String id) {
+        JSONObject json = new JSONObject();
+        User user = userService.getById(Integer.valueOf(id));
+        json.put("user", user);
+        return json;
+    }
+
+    @PostMapping(value = "/testRequestBody")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "id", dataType = "int", paramType = "body"),
+            @ApiImplicitParam(name = "name", value = "姓名", dataType = "String", paramType = "body")
+    })
+    public JsonResult add(@RequestBody User user) {
+        JsonResult json = JsonResult.success();
+        System.out.println(user.toString());
+        return json;
+    }
+
 
     @PostMapping(value = "/insert")
     @ApiImplicitParams({

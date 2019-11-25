@@ -25,6 +25,11 @@ public class UserTest {
     private UserController userController;
 
     @Test
+    public void transactionalTest() {
+        userService.insert();
+    }
+
+    @Test
     public void checkToken() throws UtilException {
         boolean qw =JwtUtil.verifyToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyTmFtZSI6ImxkeSIsImV4cCI6MTU2NzYwMjE1M30.h-OP3rAT1GPkgND3YNPE8b9iSzwbfEyDl6rrF47R-2M", "ldy");
         System.out.println(qw);

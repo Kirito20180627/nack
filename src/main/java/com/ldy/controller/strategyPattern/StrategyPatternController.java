@@ -24,6 +24,8 @@ public class StrategyPatternController {
     public Map<String, String> query1(String type){
         return queryBizService_demo1.query(type);
     }
+
+
     @RequestMapping(value = "/test2",method = {RequestMethod.GET, RequestMethod.POST})
     public Map<String, String> query2(String type){
         return queryBizService_demo2.queryMap(type);

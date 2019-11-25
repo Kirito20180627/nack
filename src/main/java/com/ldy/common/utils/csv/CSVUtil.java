@@ -127,7 +127,7 @@ public class CSVUtil {
                     if ( ! colNames.equals(line)){
                         throw new UtilException("文件内容格式错误，请下载模板填写");
                     }
-                    String csvSplitBy = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$";
+                    String csvSplitBy = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)";
                     while ((line = reader.readLine()) != null){
                         String[] item = line.split(csvSplitBy,-1);
                         if (item.length > length){

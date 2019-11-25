@@ -55,7 +55,7 @@ public class AsyncController {
 
     }
 
-    @ApiOperation(value = "测试get方式传参", notes = "测试@PathVaribale 获取url中的数据")
+    @ApiOperation(value = "测试get方式传参1", notes = "测试@PathVaribale 获取url中的数据")
     @GetMapping("/user/{id}")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户id", required = true)
@@ -71,7 +71,7 @@ public class AsyncController {
         return json;
     }
 
-    @ApiOperation(value = "测试get方式传参", notes = "@RequestParam 获取请求参数的值")
+    @ApiOperation(value = "测试get方式传参2", notes = "@RequestParam 获取请求参数的值")
     @GetMapping("/user")
     public JsonResult getUserById2(@RequestParam("id")int userId) {
         JsonResult json = JsonResult.success();
